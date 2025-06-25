@@ -1,0 +1,13 @@
+Referencias
+Modelos de Arquitecturas de Software y Microservicios
+----------------------------------------------------------------------------------------------------------------------
+NIST SP 800-204	Modelo de referencia	https://csrc.nist.gov/publications/detail/sp/800-204/final
+Microsoft Azure Architecture Center	Referencia e implementación	https://learn.microsoft.com/en-us/azure/architecture/
+IBM Cloud Architecture Center	Referencia	https://www.ibm.com/cloud/architecture/
+The Open Group - O-AA	Referencia empresarial	https://publications.opengroup.org/g21c
+CNCF Cloud Native Landscape	Implementación práctica	https://landscape.cncf.io/
+C4: https://c4model.com/
+SOA:https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.pdf
+ISO 42010: https://www.iso.org/standard/50508.html
+NIST: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication500-292.pdf
+Togaf: https://www.opengroup.org/togaf
