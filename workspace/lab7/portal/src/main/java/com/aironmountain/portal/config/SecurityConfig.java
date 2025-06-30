@@ -16,7 +16,9 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
+
 import static org.springframework.security.config.Customizer.withDefaults;
+
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.User;
@@ -30,14 +32,13 @@ public class SecurityConfig {
      public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
          return httpSecurity
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/login", "/css/**", "/js/**").permitAll();
+                    auth.requestMatchers("/api/portal/public").permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(form -> form
-                    .loginPage("/login")
+                 // .loginPage("/login")
                  // .successHandler(successHandler())
                     .defaultSuccessUrl("/api/portal/private", true)
-                    .failureUrl("/login?error=true")
                     .permitAll())
                 .sessionManagement(session -> session
                     .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
@@ -46,9 +47,14 @@ public class SecurityConfig {
                         .expiredUrl("/login?expired")
                         .maxSessionsPreventsLogin(false)
                         .sessionRegistry(sessionRegistry())
-                 ))
-                 .httpBasic(withDefaults()) // Envia las credenciales en el header no es lo deseable
-                 .csrf(csrf -> csrf.disable())
+                )
+                //    .invalidSessionUrl("/login")
+                //    .maximumSessions(1)
+                //    .expiredUrl("/login")
+                //    .sessionRegistry(sessionRegistry())
+                 )
+                .httpBasic(withDefaults())
+                .csrf(csrf -> csrf.disable())
                  .build();
      }         
 
@@ -82,7 +88,8 @@ public class SecurityConfig {
     }
 
 // Nota:
-// Si estás usando login por formulario (formLogin),Spring Security ya migra el ID de sesión automáticamente tras login exitoso.
+// Si estás usando login por formulario (formLogin), 
+// Spring Security ya migra el ID de sesión automáticamente tras login exitoso.
 
    @Bean
    public SessionRegistry  sessionRegistry(){
