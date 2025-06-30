@@ -19,21 +19,21 @@ import com.aironmoutain.identidades.service.UsuarioService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/api/identidades")
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
     
-    @PostMapping
+    @PostMapping("/usuarios")
     public ResponseEntity<String> crearUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
         Usuario entity=UsuarioMapper.toEntity(usuarioDTO);
         usuarioService.guardar(entity);
         return ResponseEntity.ok("Usuario creado correctamente");
     }
 
-   @GetMapping
+   @GetMapping("/usuarios")
     public List<UsuarioDTO> listar() {
         List<Usuario> lista = usuarioService.listar();
         List<UsuarioDTO> listaDTO =  new ArrayList<UsuarioDTO>();
