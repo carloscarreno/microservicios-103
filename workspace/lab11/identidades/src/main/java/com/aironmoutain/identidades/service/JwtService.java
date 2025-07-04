@@ -30,6 +30,7 @@ public class JwtService {
   
    // Este metodo crea un token
    public String generateToken(String username){
+      // keycloack builder
       return Jwts.builder()
                  .setSubject(username)
                  .setIssuedAt(new Date(System.currentTimeMillis()))
@@ -84,4 +85,4 @@ public class JwtService {
 
 // Generadores en linea
 // https://www.vondy.com/random-key-generator--ZzGGMYgS
-  // https://www.xconvert.com/unit-converter/days-to-milliseconds
+// https://www.xconvert.com/unit-converter/days-to-milliseconds

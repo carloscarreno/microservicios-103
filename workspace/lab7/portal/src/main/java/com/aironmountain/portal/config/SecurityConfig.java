@@ -55,13 +55,14 @@ public class SecurityConfig {
                  )
                 .httpBasic(withDefaults())
                 .csrf(csrf -> csrf.disable())
-                 .build();
+                .build();
      }         
 
 
     @Bean
     public UserDetailsService users(PasswordEncoder encoder) {
-       UserDetails admin = User.builder()
+        // Base de datos, LDAP, SSO
+        UserDetails admin = User.builder()
             .username("admin")
             .password(encoder.encode("changeit!"))
             .roles("ADMIN")

@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PortalController {
   
   @Autowired
-  private SessionRegistry sessionRegistry;
+  private SessionRegistry sessionRegistry; 
 
   @GetMapping("/public")
   public ResponseEntity<String> publico() {
-      return ResponseEntity.ok("Esta es una zona publico, precaucion!");
+      return ResponseEntity.ok("Esta es una zona publica, precaucion!");
   }
   
 
@@ -51,6 +51,6 @@ public class PortalController {
       response.put("sessionId", sessionId);
       response.put("sessionData", entity);
       return ResponseEntity.ok(response);
-   }
+   } 
 
 }
