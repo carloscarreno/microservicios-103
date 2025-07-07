@@ -37,6 +37,8 @@ public class JwtService {
                  .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(timeExpiration)))
                  .claim("rol", "USER")      // atributos personalizados
                  .claim("unit", "training")
+                 .claim("clave","cambialo")
+                 .claim("city","Lima")
                  .claim("country", "pe")
                  .signWith(getSignatureKey(), SignatureAlgorithm.HS256)
                  .compact();

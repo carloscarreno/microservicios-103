@@ -20,7 +20,7 @@ public class PortalController {
         // Cualquier usuario, para aplicar restricciones a los usuarios mediante roles
         // es necesario @EnableMethodSecurity en la clase de configuracion
         @GetMapping("/public-zone")
-        @PreAuthorize("hasRole('user_client')")
+        @PreAuthorize("hasRole('user_client') or hasRole('admin_client')")
         public String zonaPublica() {
              return "Precaucion estas en una zona publica - USER";
         }
